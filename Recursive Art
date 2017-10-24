@@ -1,0 +1,20 @@
+var drawShape = function(x, y, height, width) {
+    
+    var r = Math.floor((Math.random() * 400) + 1);
+    var g = Math.floor((Math.random() * 400) + 1);
+    var b = Math.floor((Math.random() * 400) + 1);
+    fill(r, g, b);
+    
+    rect(x, y, height, width);
+    
+    var newheight = height/1.1;
+    var newWidth = width/1.1;
+    if (newheight >= 2&& newWidth >= 2) {
+        drawShape(x, y, newheight, newWidth);
+        fill(r, g, b);
+        ellipse(newheight/2,newWidth/2, newheight/2,     newheight/2); 
+    }
+    
+};
+
+drawShape(0, 0, 500, 500);
