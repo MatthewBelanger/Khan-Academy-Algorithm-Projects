@@ -1,0 +1,67 @@
+//displays the the changed array and uses colors to show whats moving, red for lowest number, and purple for the number it swiched with
+var display = function(array, space, X, Y, num1, num2){
+     textFont(createFont("monospace"), 15);
+    for(var x = 0 ; x < array.length ; x++){
+        if(x===num1)
+        {
+        fill(255, 0, 0);
+        text(array[x], X+x*25, Y+space);
+        }
+        
+        else if (x===num2)
+        {
+        fill(201, 116, 232);
+        text(array[x], X+x*25, Y+space);
+        }
+        
+        else 
+        {
+        fill(8, 8, 8);
+        text(array[x], X+x*25, Y+space);
+        }
+    }
+};
+
+//swaps the numbers
+var swap = function(array, firstIndex, secondIndex) {
+    var temp = array[firstIndex];
+    array[firstIndex] = array[secondIndex];
+    array[secondIndex] = temp;
+};
+//finds the lowest number 
+var indexOfMinimum = function(array, startIndex) {
+
+    var minValue = array[startIndex];
+    var minIndex = startIndex;
+
+    for(var i = minIndex + 1; i < array.length; i++) {
+        if(array[i] < minValue) {
+            minIndex = i;
+             minValue = array[i];
+        }
+    } 
+    return minIndex;
+}; 
+//selection sort function
+var selectionSort = function(array, X, Y) {
+var num;
+
+for(var x=0; x<array.length; x++){
+    
+    num = indexOfMinimum(array, x);
+    swap(array, num, x);
+    display(array, x*22, X, Y, num, x);
+}
+};
+//arrays
+var array = [25, 99, 1, 26, 67, 7];
+selectionSort(array, 25, 25);
+
+var array2 = [97, 66, 32, 27, 11, 5];
+selectionSort(array2, 225, 25);
+
+var array3 = [65, 65, 9, 78, 45, 65];
+selectionSort(array3, 25, 225);
+
+var array4 = [14, 27, 58, 43, 79, 95];
+selectionSort(array4, 225, 225);
